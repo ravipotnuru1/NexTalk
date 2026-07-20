@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 * {
   margin: 0;
@@ -14,10 +15,21 @@ body,
   min-height: 100vh;
 }
 
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 body {
   font-family: Inter, sans-serif;
-  background: #f5f7fb;
+  background-color: #f5f7fb;
+  color: #111827;
   overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #0f172a;
+  color: #f8fafc;
 }
 
 a {
@@ -27,9 +39,40 @@ a {
 
 button {
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 img {
   display: block;
   max-width: 100%;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+::selection {
+  background: #3b82f6;
+  color: #fff;
 }

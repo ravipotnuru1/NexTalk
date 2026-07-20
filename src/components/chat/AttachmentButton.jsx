@@ -29,19 +29,23 @@ function AttachmentButton({ onFileSelect }) {
         onClick={() => inputRef.current?.click()}
         className="
           flex
-          h-10
-          w-10
+          h-12
+          w-12
+          lg:h-10
+          lg:w-10
           items-center
           justify-center
           rounded-full
           text-gray-500
+          dark:text-gray-300
           transition-all
           duration-300
           hover:bg-gray-200
+          dark:hover:bg-slate-700
           hover:text-blue-600
         "
       >
-        <FiPaperclip size={20} />
+        <FiPaperclip size={24} className="lg:text-[20px]" />
       </button>
     </>
   );

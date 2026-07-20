@@ -21,46 +21,20 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
   const { user } = useAuth();
 
   const menuItems = [
-    {
-      name: "Chats",
-      path: ROUTES.DASHBOARD,
-    },
-    {
-      name: "Contacts",
-      path: ROUTES.CONTACTS,
-    },
-    {
-      name: "Profile",
-      path: ROUTES.PROFILE,
-    },
-    {
-      name: "Settings",
-      path: ROUTES.SETTINGS,
-    },
+    { name: "Chats", path: ROUTES.DASHBOARD },
+    { name: "Contacts", path: ROUTES.CONTACTS },
+    { name: "Profile", path: ROUTES.PROFILE },
+    { name: "Settings", path: ROUTES.SETTINGS },
   ];
 
   return (
     <aside
       className={`
-        fixed
-        lg:relative
-        top-0
-        left-0
-        z-50
-        h-full
-        w-[340px]
-        max-w-full
-        lg:w-[340px]
-        sm:w-80
-        bg-white
-        border-r
-        border-gray-200
-        flex
-        flex-col
-        shadow-xl
-        transition-transform
-        duration-500
-        ease-in-out
+        fixed top-0 left-0 z-50 flex h-full w-[360px] max-w-full
+        flex-col border-r border-gray-200 bg-white shadow-xl
+        transition-all duration-300
+        dark:border-slate-700 dark:bg-slate-900
+        lg:relative lg:w-[340px]
         ${
           mobileOpen
             ? "translate-x-0"
@@ -69,60 +43,64 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
       `}
     >
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
+      <div className="flex items-center justify-between border-b border-gray-200 px-5 py-5 dark:border-slate-700">
         <div>
-          <h1 className="text-2xl font-bold text-blue-600">
+          <h1 className="text-3xl font-bold text-blue-600 lg:text-2xl">
             NexTalk
           </h1>
 
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
             Stay Connected
           </p>
         </div>
 
         <button
-          className="rounded-lg p-2 transition hover:bg-gray-100 lg:hidden"
           onClick={() => setMobileOpen(false)}
+          className="rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-slate-800 lg:hidden"
         >
           <FiMenu size={24} />
         </button>
       </div>
 
       {/* Search */}
-      <div className="border-b border-gray-100 p-4">
+      <div className="border-b border-gray-200 p-4 dark:border-slate-700">
         <div className="relative">
           <FiSearch
-            size={18}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-          />
+  size={20}
+  className="absolute left-5 top-1/2 -translate-y-1/2 z-10 text-gray-500 pointer-events-none"
+/>
 
           <input
-            type="text"
-            placeholder="Search conversations..."
-            value={searchTerm}
-            onChange={(e) =>
-              setSearchTerm(e.target.value)
-            }
-            className="
-              w-full
-              rounded-full
-              bg-gray-100
-              py-3.5
-              pl-11
-              pr-4
-              text-sm
-              outline-none
-              transition
-              focus:bg-white
-              focus:ring-2
-              focus:ring-blue-500
-            "
-          />
+  type="text"
+  placeholder="Search conversations..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  style={{ paddingLeft: "60px" }}
+  className="
+    w-full
+    h-12
+    rounded-full
+    border
+    border-gray-300
+    bg-gray-100
+    pr-4
+    text-sm
+    text-gray-800
+    placeholder:text-gray-400
+    outline-none
+    transition
+    focus:border-blue-500
+    focus:bg-white
+    dark:border-slate-700
+    dark:bg-slate-800
+    dark:text-white
+    dark:focus:bg-slate-700
+  "
+/>
         </div>
       </div>
-
       {/* Navigation */}
-      <div className="flex gap-2 overflow-x-auto border-b border-gray-100 px-4 py-3 scrollbar-hide">
+      <div className="flex gap-2 overflow-x-auto border-b border-gray-200 px-4 py-3 dark:border-slate-700">
         {menuItems.map((item) => (
           <button
             key={item.path}
@@ -135,11 +113,10 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
               text-sm
               font-medium
               transition-all
-              duration-300
               ${
                 location.pathname === item.path
-                  ? "bg-blue-600 text-white shadow"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
               }
             `}
           >
@@ -151,7 +128,7 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
       {/* Conversations */}
       <div className="flex-1 overflow-y-auto">
         {filteredChats.length === 0 ? (
-          <div className="flex h-full items-center justify-center px-6 text-center text-gray-500">
+          <div className="flex h-full items-center justify-center px-6 text-center text-gray-500 dark:text-gray-400">
             No conversations found.
           </div>
         ) : (
@@ -168,26 +145,21 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
           ))
         )}
       </div>
-
       {/* Footer */}
-      <div className="border-t border-gray-200 p-4">
-        <div className="flex items-center gap-3 rounded-2xl bg-gray-50 p-4 transition hover:bg-gray-100">
-
+      <div className="border-t border-gray-200 p-4 dark:border-slate-700">
+        <div className="flex items-center gap-3 rounded-2xl bg-gray-50 p-3 transition-colors duration-300 dark:bg-slate-800">
           <img
-            src={
-              user?.avatar ||
-              "https://i.pravatar.cc/150?img=12"
-            }
+            src={user?.avatar || "https://i.pravatar.cc/150?img=12"}
             alt={user?.name || "User"}
             className="h-14 w-14 rounded-full object-cover"
           />
 
           <div className="min-w-0 flex-1">
-            <h3 className="truncate text-base font-semibold text-gray-800">
+            <h3 className="truncate text-base font-semibold text-gray-800 dark:text-white">
               {user?.name || "Guest User"}
             </h3>
 
-            <p className="truncate text-sm text-gray-500">
+            <p className="truncate text-sm text-gray-500 dark:text-gray-400">
               {user?.email || "guest@example.com"}
             </p>
           </div>

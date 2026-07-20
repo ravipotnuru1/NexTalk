@@ -1,40 +1,29 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("nextalk-theme") || "light";
+  const [isDark, setIsDark] = useState(() => {
+    return localStorage.getItem("isDark") === "true";
   });
 
   useEffect(() => {
-    localStorage.setItem("nextalk-theme", theme);
-
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
+    document.documentElement.classList.toggle("dark", isDark);
+    localStorage.setItem("isDark", String(isDark));
+  }, [isDark]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
-  const value = {
-    theme,
-    setTheme,
-    toggleTheme,
-    isDark: theme === "dark",
+    setIsDark((prev) => !prev);
   };
 
   return (
-    <ThemeContext.Provider value={value}>
+    <ThemeContext.Provider
+      value={{
+        isDark,
+        toggleTheme,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );
-}
-
-export function useThemeContext() {
-  return useContext(ThemeContext);
 }

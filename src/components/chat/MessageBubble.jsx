@@ -5,17 +5,17 @@ function MessageBubble({ message }) {
 
   return (
     <div
-      className={`mb-4 flex ${
+      className={`mb-5 flex ${
         isMe ? "justify-end" : "justify-start"
       }`}
     >
       <div
         className={`
-          max-w-[85%]
+          max-w-[88%]
           sm:max-w-[75%]
           rounded-3xl
-          px-4
-          py-3
+          px-5
+          py-4
           shadow-sm
           break-words
           transition-all
@@ -23,19 +23,19 @@ function MessageBubble({ message }) {
           ${
             isMe
               ? "rounded-br-md bg-blue-600 text-white"
-              : "rounded-bl-md border border-gray-200 bg-white text-gray-800"
+              : "rounded-bl-md border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-800 dark:text-white"
           }
         `}
       >
-        <p className="whitespace-pre-wrap break-words text-sm leading-6 sm:text-[15px]">
+        <p className="whitespace-pre-wrap break-words text-base lg:text-sm leading-7 lg:leading-6">
           {message.text}
         </p>
 
         <div
-          className={`mt-2 flex items-center justify-end gap-1 text-xs ${
+          className={`mt-3 flex items-center justify-end gap-1 text-xs ${
             isMe
               ? "text-blue-100"
-              : "text-gray-500"
+              : "text-gray-500 dark:text-gray-400"
           }`}
         >
           <span>{message.time}</span>
@@ -43,11 +43,11 @@ function MessageBubble({ message }) {
           {isMe &&
             (message.read ? (
               <FaCheckDouble
-                size={12}
+                size={13}
                 className="text-cyan-300"
               />
             ) : (
-              <FaCheck size={11} />
+              <FaCheck size={12} />
             ))}
         </div>
       </div>

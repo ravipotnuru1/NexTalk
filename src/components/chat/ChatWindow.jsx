@@ -24,14 +24,14 @@ function ChatWindow({ onMenuClick }) {
 
   if (!selectedChat) {
     return (
-      <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-6">
+      <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 px-6 transition-colors duration-300">
         <div className="max-w-md text-center">
 
-          <h2 className="mb-3 text-3xl font-bold text-gray-800">
+          <h2 className="mb-4 text-4xl lg:text-3xl font-bold text-gray-800 dark:text-white">
             Welcome to NexTalk
           </h2>
 
-          <p className="text-base text-gray-500">
+          <p className="text-lg lg:text-base text-gray-500 dark:text-gray-400">
             Select a conversation to start chatting with your friends and colleagues.
           </p>
 
@@ -44,7 +44,7 @@ function ChatWindow({ onMenuClick }) {
     messages[selectedChat.id] || [];
 
   return (
-    <div className="flex h-full flex-col bg-gray-100">
+    <div className="flex h-full flex-col bg-gray-100 dark:bg-slate-900 transition-colors duration-300">
 
       <ChatHeader
         onMenuClick={onMenuClick}
@@ -54,8 +54,8 @@ function ChatWindow({ onMenuClick }) {
         className="
           flex-1
           overflow-y-auto
-          px-3
-          py-4
+          px-4
+          py-5
           sm:px-5
           sm:py-5
           lg:px-6

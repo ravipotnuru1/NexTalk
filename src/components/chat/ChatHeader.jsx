@@ -12,8 +12,8 @@ function ChatHeader({ onMenuClick }) {
 
   if (!selectedChat) {
     return (
-      <header className="flex h-20 items-center justify-center border-b border-gray-200 bg-white">
-        <p className="text-gray-500 text-sm sm:text-base">
+      <header className="flex h-24 lg:h-20 items-center justify-center border-b border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 transition-colors duration-300">
+        <p className="text-gray-500 dark:text-gray-400 text-base">
           Select a conversation
         </p>
       </header>
@@ -21,89 +21,84 @@ function ChatHeader({ onMenuClick }) {
   }
 
   return (
-    <header className="flex h-20 items-center justify-between border-b border-gray-200 bg-white px-4 sm:px-6 shadow-sm">
+    <header className="flex h-28 lg:h-20 items-center justify-between border-b border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-6 lg:px-6 shadow-sm transition-colors duration-300">
 
       {/* Left */}
-      <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+      <div className="flex min-w-0 items-center gap-5 lg:gap-4">
 
         <button
           onClick={onMenuClick}
-          className="rounded-lg p-2 transition hover:bg-gray-100 lg:hidden"
+          className="rounded-xl p-3 transition hover:bg-gray-100 dark:hover:bg-slate-800 lg:hidden"
         >
-          <FiMenu size={22} />
+          <FiMenu size={28} />
         </button>
 
         <div className="relative flex-shrink-0">
-
           <img
             src={selectedChat.avatar}
             alt={selectedChat.name}
-            className="h-12 w-12 rounded-full object-cover"
+            className="h-16 w-16 lg:h-12 lg:w-12 rounded-full object-cover"
           />
 
           {selectedChat.online && (
-            <span className="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500"></span>
+            <span className="absolute bottom-0 right-0 h-4 w-4 rounded-full border-2 border-white dark:border-slate-900 bg-green-500"></span>
           )}
-
         </div>
 
         <div className="min-w-0">
-
-          <h2 className="truncate text-base sm:text-lg font-semibold text-gray-800">
+          <h2 className="truncate text-xl lg:text-base font-semibold text-gray-800 dark:text-white">
             {selectedChat.name}
           </h2>
 
           <p
-            className={`truncate text-xs sm:text-sm ${
+            className={`truncate text-base lg:text-xs ${
               selectedChat.online
                 ? "text-green-600"
-                : "text-gray-500"
+                : "text-gray-500 dark:text-gray-400"
             }`}
           >
             {selectedChat.online
               ? "Online"
               : "Last seen recently"}
           </p>
-
         </div>
 
       </div>
 
       {/* Right */}
-      <div className="flex items-center gap-1 sm:gap-2">
+      <div className="flex items-center gap-3 lg:gap-1">
 
         <button
-          className="rounded-full p-2.5 sm:p-3 transition hover:bg-gray-100"
+          className="rounded-full p-3 lg:p-2.5 transition hover:bg-gray-100 dark:hover:bg-slate-800"
           title="Voice Call"
         >
           <FiPhone
-            size={20}
-            className="text-gray-600"
+            size={24}
+            className="text-gray-600 dark:text-gray-300"
           />
         </button>
 
         <button
-          className="rounded-full p-2.5 sm:p-3 transition hover:bg-gray-100"
+          className="rounded-full p-3 lg:p-2.5 transition hover:bg-gray-100 dark:hover:bg-slate-800"
           title="Video Call"
         >
           <FiVideo
-            size={20}
-            className="text-gray-600"
+            size={24}
+            className="text-gray-600 dark:text-gray-300"
           />
         </button>
 
         <button
-          className="rounded-full p-2.5 sm:p-3 transition hover:bg-gray-100"
+          className="rounded-full p-3 lg:p-2.5 transition hover:bg-gray-100 dark:hover:bg-slate-800"
           title="More"
         >
           <FiMoreVertical
-            size={20}
-            className="text-gray-600"
+            size={24}
+            className="text-gray-600 dark:text-gray-300"
           />
         </button>
 
       </div>
-
     </header>
   );
 }

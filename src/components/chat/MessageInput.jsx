@@ -42,8 +42,8 @@ function MessageInput() {
   };
 
   return (
-    <div className="border-t border-gray-200 bg-white px-3 py-3 sm:px-6 sm:py-4">
-      <div className="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-2 shadow-sm">
+    <div className="border-t border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-4 sm:px-6 sm:py-4 transition-colors duration-300">
+      <div className="flex items-center gap-3 rounded-full border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 px-4 py-3 shadow-sm">
 
         <EmojiPicker onSelect={handleEmoji} />
 
@@ -60,7 +60,10 @@ function MessageInput() {
             bg-transparent
             px-2
             py-3
-            text-sm
+            text-base
+            lg:text-sm
+            text-gray-800
+            dark:text-white
             outline-none
             placeholder:text-gray-400
           "
@@ -74,8 +77,10 @@ function MessageInput() {
           disabled={!text.trim()}
           className="
             flex
-            h-11
-            w-11
+            h-12
+            w-12
+            lg:h-11
+            lg:w-11
             items-center
             justify-center
             rounded-full
@@ -90,7 +95,7 @@ function MessageInput() {
             disabled:hover:scale-100
           "
         >
-          <FiSend size={18} />
+          <FiSend size={20} />
         </button>
 
       </div>
