@@ -16,7 +16,7 @@ function ConversationItem({
         gap-4
         border-b
         border-gray-100
-        px-5
+        px-4
         py-4
         text-left
         transition-all
@@ -34,7 +34,7 @@ function ConversationItem({
         <img
           src={chat.avatar}
           alt={chat.name}
-          className="h-14 w-14 rounded-full object-cover transition group-hover:scale-105"
+          className="h-14 w-14 rounded-full object-cover transition duration-300 group-hover:scale-105"
         />
 
         {chat.online && (
@@ -46,11 +46,10 @@ function ConversationItem({
       {/* Content */}
       <div className="min-w-0 flex-1">
 
-        {/* Top */}
         <div className="mb-1 flex items-center justify-between">
 
           <h3
-            className={`truncate text-[15px] ${
+            className={`truncate text-base ${
               active
                 ? "font-bold text-blue-700"
                 : "font-semibold text-gray-800"
@@ -71,7 +70,6 @@ function ConversationItem({
 
         </div>
 
-        {/* Bottom */}
         <div className="flex items-center justify-between gap-3">
 
           <div className="flex min-w-0 items-center gap-2">
@@ -89,7 +87,7 @@ function ConversationItem({
           </div>
 
           {chat.unread > 0 && (
-            <div className="flex h-6 min-w-[24px] items-center justify-center rounded-full bg-blue-600 px-2 text-xs font-bold text-white shadow">
+            <div className="flex h-6 min-w-[24px] items-center justify-center rounded-full bg-blue-600 px-2 text-xs font-bold text-white">
               {chat.unread}
             </div>
           )}

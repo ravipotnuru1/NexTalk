@@ -42,8 +42,8 @@ function MessageInput() {
   };
 
   return (
-    <div className="border-t border-gray-200 bg-white px-6 py-4">
-      <div className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 shadow-sm">
+    <div className="border-t border-gray-200 bg-white px-3 py-3 sm:px-6 sm:py-4">
+      <div className="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-2 shadow-sm">
 
         <EmojiPicker onSelect={handleEmoji} />
 
@@ -55,7 +55,15 @@ function MessageInput() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 bg-transparent px-2 py-3 text-sm outline-none"
+          className="
+            flex-1
+            bg-transparent
+            px-2
+            py-3
+            text-sm
+            outline-none
+            placeholder:text-gray-400
+          "
         />
 
         <VoiceButton onClick={handleVoice} />
@@ -64,9 +72,25 @@ function MessageInput() {
           type="button"
           onClick={handleSend}
           disabled={!text.trim()}
-          className="rounded-full bg-blue-600 p-3 text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+          className="
+            flex
+            h-11
+            w-11
+            items-center
+            justify-center
+            rounded-full
+            bg-blue-600
+            text-white
+            transition-all
+            duration-300
+            hover:scale-105
+            hover:bg-blue-700
+            disabled:cursor-not-allowed
+            disabled:bg-gray-300
+            disabled:hover:scale-100
+          "
         >
-          <FiSend size={20} />
+          <FiSend size={18} />
         </button>
 
       </div>

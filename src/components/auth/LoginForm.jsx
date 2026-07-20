@@ -117,7 +117,7 @@ function LoginForm() {
         required
       />
 
-      <div className="flex items-center justify-between text-base">
+      <div className="flex flex-col gap-3 text-base sm:flex-row sm:items-center sm:justify-between">
         <label className="flex items-center gap-2 text-gray-600">
           <input
             type="checkbox"

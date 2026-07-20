@@ -13,7 +13,7 @@ function ChatHeader({ onMenuClick }) {
   if (!selectedChat) {
     return (
       <header className="flex h-20 items-center justify-center border-b border-gray-200 bg-white">
-        <p className="text-gray-500">
+        <p className="text-gray-500 text-sm sm:text-base">
           Select a conversation
         </p>
       </header>
@@ -21,10 +21,10 @@ function ChatHeader({ onMenuClick }) {
   }
 
   return (
-    <header className="flex h-20 items-center justify-between border-b border-gray-200 bg-white px-6 shadow-sm">
+    <header className="flex h-20 items-center justify-between border-b border-gray-200 bg-white px-4 sm:px-6 shadow-sm">
 
       {/* Left */}
-      <div className="flex items-center gap-4">
+      <div className="flex min-w-0 items-center gap-3 sm:gap-4">
 
         <button
           onClick={onMenuClick}
@@ -33,7 +33,7 @@ function ChatHeader({ onMenuClick }) {
           <FiMenu size={22} />
         </button>
 
-        <div className="relative">
+        <div className="relative flex-shrink-0">
 
           <img
             src={selectedChat.avatar}
@@ -47,14 +47,14 @@ function ChatHeader({ onMenuClick }) {
 
         </div>
 
-        <div>
+        <div className="min-w-0">
 
-          <h2 className="text-lg font-semibold text-gray-800">
+          <h2 className="truncate text-base sm:text-lg font-semibold text-gray-800">
             {selectedChat.name}
           </h2>
 
           <p
-            className={`text-sm ${
+            className={`truncate text-xs sm:text-sm ${
               selectedChat.online
                 ? "text-green-600"
                 : "text-gray-500"
@@ -70,10 +70,10 @@ function ChatHeader({ onMenuClick }) {
       </div>
 
       {/* Right */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 sm:gap-2">
 
         <button
-          className="rounded-full p-3 transition hover:bg-gray-100"
+          className="rounded-full p-2.5 sm:p-3 transition hover:bg-gray-100"
           title="Voice Call"
         >
           <FiPhone
@@ -83,7 +83,7 @@ function ChatHeader({ onMenuClick }) {
         </button>
 
         <button
-          className="rounded-full p-3 transition hover:bg-gray-100"
+          className="rounded-full p-2.5 sm:p-3 transition hover:bg-gray-100"
           title="Video Call"
         >
           <FiVideo
@@ -93,7 +93,7 @@ function ChatHeader({ onMenuClick }) {
         </button>
 
         <button
-          className="rounded-full p-3 transition hover:bg-gray-100"
+          className="rounded-full p-2.5 sm:p-3 transition hover:bg-gray-100"
           title="More"
         >
           <FiMoreVertical

@@ -48,14 +48,17 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
         left-0
         z-50
         h-full
-        w-80
+        w-full
+        sm:w-80
         bg-white
         border-r
         border-gray-200
         flex
         flex-col
+        shadow-xl
         transition-transform
-        duration-300
+        duration-500
+        ease-in-out
         ${
           mobileOpen
             ? "translate-x-0"
@@ -64,19 +67,19 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
       `}
     >
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-gray-200 px-6 py-5">
+      <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
         <div>
           <h1 className="text-2xl font-bold text-blue-600">
             NexTalk
           </h1>
 
-          <p className="text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500">
             Stay Connected
           </p>
         </div>
 
         <button
-          className="lg:hidden"
+          className="rounded-lg p-2 transition hover:bg-gray-100 lg:hidden"
           onClick={() => setMobileOpen(false)}
         >
           <FiMenu size={24} />
@@ -102,9 +105,10 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
               w-full
               rounded-full
               bg-gray-100
-              py-3
+              py-3.5
               pl-11
               pr-4
+              text-sm
               outline-none
               transition
               focus:bg-white
@@ -116,7 +120,7 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
       </div>
 
       {/* Navigation */}
-      <div className="flex gap-2 overflow-x-auto border-b border-gray-100 px-4 py-3">
+      <div className="flex gap-2 overflow-x-auto border-b border-gray-100 px-4 py-3 scrollbar-hide">
         {menuItems.map((item) => (
           <button
             key={item.path}
@@ -128,10 +132,11 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
               py-2
               text-sm
               font-medium
-              transition
+              transition-all
+              duration-300
               ${
                 location.pathname === item.path
-                  ? "bg-blue-600 text-white"
+                  ? "bg-blue-600 text-white shadow"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }
             `}
@@ -161,9 +166,10 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
           ))
         )}
       </div>
+
       {/* Footer */}
       <div className="border-t border-gray-200 p-4">
-        <div className="flex items-center gap-3 rounded-xl bg-gray-50 p-3">
+        <div className="flex items-center gap-3 rounded-2xl bg-gray-50 p-4 transition hover:bg-gray-100">
 
           <img
             src={
@@ -171,11 +177,11 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
               "https://i.pravatar.cc/150?img=12"
             }
             alt={user?.name || "User"}
-            className="h-12 w-12 rounded-full object-cover"
+            className="h-14 w-14 rounded-full object-cover"
           />
 
           <div className="min-w-0 flex-1">
-            <h3 className="truncate font-semibold text-gray-800">
+            <h3 className="truncate text-base font-semibold text-gray-800">
               {user?.name || "Guest User"}
             </h3>
 
