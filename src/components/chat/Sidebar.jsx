@@ -43,12 +43,14 @@ function Sidebar({ mobileOpen, setMobileOpen }) {
     <aside
       className={`
         fixed
-        lg:static
+        lg:relative
         top-0
         left-0
         z-50
         h-full
-        w-full
+        w-[340px]
+        max-w-full
+        lg:w-[340px]
         sm:w-80
         bg-white
         border-r

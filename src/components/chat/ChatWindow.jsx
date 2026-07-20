@@ -62,7 +62,7 @@ function ChatWindow({ onMenuClick }) {
           lg:py-6
         "
       >
-        <div className="mx-auto flex w-full max-w-5xl flex-col">
+        <div className="flex w-full flex-col">
 
           {chatMessages.map((message) => (
             <MessageBubble
