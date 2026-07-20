@@ -2,11 +2,11 @@ import { Outlet } from "react-router-dom";
 
 function AuthLayout() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 px-4 py-6">
 
-      <div className="w-full max-w-6xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+      <div className="w-full max-w-7xl overflow-hidden rounded-3xl bg-white shadow-2xl">
 
-        <div className="grid min-h-[700px] lg:grid-cols-2">
+        <div className="grid min-h-screen lg:min-h-[700px] lg:grid-cols-2">
 
           {/* Left Side */}
           <div className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-blue-700 to-indigo-800 p-12 text-white">
@@ -20,7 +20,7 @@ function AuthLayout() {
               fast and beautiful messaging.
             </p>
 
-            <div className="space-y-5">
+            <div className="space-y-6">
 
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-xl">
@@ -75,9 +75,9 @@ function AuthLayout() {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center justify-center bg-gray-50 p-6 sm:p-10 lg:p-14">
+          <div className="flex items-center justify-center bg-gray-50 px-6 py-10 sm:px-10 lg:px-14">
 
-            <div className="w-full max-w-md">
+            <div className="w-full max-w-xl">
               <Outlet />
             </div>
 

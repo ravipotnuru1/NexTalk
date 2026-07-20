@@ -18,10 +18,12 @@ function PasswordInput({
       {label && (
         <label
           htmlFor={name}
-          className="mb-2 block text-sm font-semibold text-gray-700"
+          className="mb-2 block text-base font-semibold text-gray-700"
         >
           {label}
-          {required && <span className="ml-1 text-red-500">*</span>}
+          {required && (
+            <span className="ml-1 text-red-500">*</span>
+          )}
         </label>
       )}
 
@@ -37,11 +39,16 @@ function PasswordInput({
           required={required}
           autoComplete="off"
           className={`
-            w-full rounded-xl border
-            px-4 py-3 pr-12
-            text-sm
+            w-full
+            rounded-xl
+            border
+            px-5
+            py-4
+            pr-14
+            text-base
             outline-none
-            transition-all duration-300
+            transition-all
+            duration-300
             ${
               error
                 ? "border-red-500 focus:border-red-500 focus:ring-red-100"
@@ -62,15 +69,15 @@ function PasswordInput({
           className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 transition-colors hover:text-blue-600"
         >
           {showPassword ? (
-            <FiEyeOff size={20} />
+            <FiEyeOff size={22} />
           ) : (
-            <FiEye size={20} />
+            <FiEye size={22} />
           )}
         </button>
       </div>
 
       {error && (
-        <p className="mt-1 text-xs text-red-500">
+        <p className="mt-2 text-sm text-red-500">
           {error}
         </p>
       )}

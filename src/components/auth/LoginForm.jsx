@@ -85,14 +85,14 @@ function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-6"
+      className="w-full space-y-8"
     >
-      <div>
-        <h2 className="text-3xl font-bold text-gray-800">
+      <div className="mb-2">
+        <h2 className="text-4xl font-bold text-gray-800">
           Welcome Back
         </h2>
 
-        <p className="mt-2 text-gray-500">
+        <p className="mt-3 text-lg text-gray-500">
           Login to continue using NexTalk.
         </p>
       </div>
@@ -117,14 +117,14 @@ function LoginForm() {
         required
       />
 
-      <div className="flex items-center justify-between">
-        <label className="flex items-center gap-2 text-sm text-gray-600">
+      <div className="flex items-center justify-between text-base">
+        <label className="flex items-center gap-2 text-gray-600">
           <input
             type="checkbox"
             name="remember"
             checked={formData.remember}
             onChange={handleChange}
-            className="rounded"
+            className="h-4 w-4 rounded"
           />
 
           Remember me
@@ -132,7 +132,7 @@ function LoginForm() {
 
         <Link
           to={ROUTES.FORGOT_PASSWORD}
-          className="text-sm font-medium text-blue-600 hover:text-blue-700"
+          className="font-medium text-blue-600 transition hover:text-blue-700"
         >
           Forgot Password?
         </Link>
@@ -146,7 +146,7 @@ function LoginForm() {
         Login
       </Button>
 
-      <p className="text-center text-sm text-gray-600">
+      <p className="text-center text-base text-gray-600">
         Don't have an account?{" "}
         <Link
           to={ROUTES.SIGNUP}
