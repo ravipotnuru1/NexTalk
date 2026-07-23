@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FiArrowRight } from "react-icons/fi";
 
 import Input from "../common/Input";
 import Button from "../common/Button";
@@ -85,15 +86,15 @@ function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full space-y-8"
+      className="space-y-7"
     >
-      <div className="mb-2">
-        <h2 className="text-4xl font-bold text-gray-800">
+      <div className="text-center">
+        <h2 className="text-5xl font-bold text-slate-900 dark:text-white">
           Welcome Back
         </h2>
 
-        <p className="mt-3 text-lg text-gray-500">
-          Login to continue using NexTalk.
+        <p className="mt-3 text-lg text-gray-500 dark:text-gray-400">
+          Sign in to continue using NexTalk.
         </p>
       </div>
 
@@ -116,15 +117,14 @@ function LoginForm() {
         error={errors.password}
         required
       />
-
-      <div className="flex flex-col gap-3 text-base sm:flex-row sm:items-center sm:justify-between">
-        <label className="flex items-center gap-2 text-gray-600">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
           <input
             type="checkbox"
             name="remember"
             checked={formData.remember}
             onChange={handleChange}
-            className="h-4 w-4 rounded"
+            className="h-4 w-4 rounded accent-blue-600"
           />
 
           Remember me
@@ -132,7 +132,7 @@ function LoginForm() {
 
         <Link
           to={ROUTES.FORGOT_PASSWORD}
-          className="font-medium text-blue-600 transition hover:text-blue-700"
+          className="text-sm font-semibold text-blue-600 transition hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
         >
           Forgot Password?
         </Link>
@@ -142,15 +142,31 @@ function LoginForm() {
         type="submit"
         fullWidth
         loading={loading}
+        className="group h-14 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-lg font-semibold shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
       >
-        Login
+        <span className="flex items-center justify-center gap-2">
+          Login
+          <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
       </Button>
 
-      <p className="text-center text-base text-gray-600">
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-gray-200 dark:border-slate-700"></div>
+        </div>
+
+        <div className="relative flex justify-center">
+          <span className="bg-white dark:bg-slate-800 px-4 text-sm text-gray-500 dark:text-gray-400">
+            New to NexTalk?
+          </span>
+        </div>
+      </div>
+
+      <p className="text-center text-base text-gray-600 dark:text-gray-300">
         Don't have an account?{" "}
         <Link
           to={ROUTES.SIGNUP}
-          className="font-semibold text-blue-600 hover:text-blue-700"
+          className="font-semibold text-blue-600 dark:text-blue-400 transition hover:text-indigo-600 dark:hover:text-blue-300"
         >
           Create Account
         </Link>

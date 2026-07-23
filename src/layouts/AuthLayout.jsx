@@ -1,96 +1,64 @@
 import { Outlet } from "react-router-dom";
+import "./AuthLayout.css";
 
 function AuthLayout() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700">
+    <div className="auth-page">
+      <div className="auth-wrapper">
+        <div className="auth-card">
+          {/* Left Side */}
+          <div className="auth-left">
+            <div className="brand">
+              <div className="brand-logo">💬</div>
 
-      <div className="mx-auto flex min-h-screen w-full max-w-7xl items-center justify-center px-4 py-6">
+              <h1>NexTalk</h1>
 
-        <div className="w-full overflow-hidden rounded-none bg-white shadow-none lg:rounded-3xl lg:shadow-2xl">
-
-          <div className="grid min-h-screen lg:min-h-[700px] lg:grid-cols-2">
-
-            {/* Left Side */}
-            <div className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-blue-700 to-indigo-800 p-12 text-white">
-
-              <h1 className="mb-6 text-5xl font-bold">
-                NexTalk
-              </h1>
-
-              <p className="mb-10 text-lg leading-8 text-blue-100">
-                Connect with your friends instantly through secure,
-                fast and beautiful messaging.
+              <p>
+                Secure. Fast. Beautiful messaging for everyone.
               </p>
-
-              <div className="space-y-6">
-
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-xl">
-                    💬
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">
-                      Real-Time Messaging
-                    </h3>
-
-                    <p className="text-sm text-blue-100">
-                      Fast conversations with modern UI.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-xl">
-                    🔒
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">
-                      Secure Chat
-                    </h3>
-
-                    <p className="text-sm text-blue-100">
-                      Privacy focused messaging experience.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-xl">
-                    🚀
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">
-                      Responsive Design
-                    </h3>
-
-                    <p className="text-sm text-blue-100">
-                      Mobile, Tablet and Desktop ready.
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-
             </div>
 
-            {/* Right Side */}
-            <div className="flex min-h-screen items-center justify-center bg-white px-6 py-10 sm:px-10 lg:min-h-[700px] lg:bg-gray-50 lg:px-14">
+            <div className="feature-list">
+              <div className="feature">
+                <div className="feature-icon">💬</div>
 
-              <div className="w-full max-w-md">
-                <Outlet />
+                <div>
+                  <h3>Real-Time Messaging</h3>
+
+                  <p>Chat instantly with friends and teams.</p>
+                </div>
               </div>
 
-            </div>
+              <div className="feature">
+                <div className="feature-icon">🔒</div>
 
+                <div>
+                  <h3>Secure Conversations</h3>
+
+                  <p>Your privacy comes first with secure messaging.</p>
+                </div>
+              </div>
+
+              <div className="feature">
+                <div className="feature-icon">🚀</div>
+
+                <div>
+                  <h3>Modern Experience</h3>
+
+                  <p>Responsive UI built for desktop and mobile.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
+          {/* Right Side */}
+          <div className="auth-right">
+            <div className="auth-form-card">
+              <Outlet />
+            </div>
+          </div>
         </div>
-
       </div>
-
     </div>
   );
 }

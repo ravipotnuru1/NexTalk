@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FiArrowRight } from "react-icons/fi";
 
 import Input from "../common/Input";
 import PasswordInput from "./PasswordInput";
@@ -92,15 +93,15 @@ function SignupForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5"
+      className="space-y-6"
     >
-      <div>
-        <h2 className="text-3xl font-bold text-gray-800">
+      <div className="text-center">
+        <h2 className="text-5xl font-bold text-slate-900">
           Create Account
         </h2>
 
-        <p className="mt-2 text-gray-500">
-          Join NexTalk and start chatting.
+        <p className="mt-3 text-lg text-gray-500">
+          Join NexTalk and start chatting with your friends.
         </p>
       </div>
 
@@ -115,7 +116,7 @@ function SignupForm() {
       />
 
       <Input
-        label="Email"
+        label="Email Address"
         type="email"
         name="email"
         value={formData.email}
@@ -142,20 +143,35 @@ function SignupForm() {
         error={errors.confirmPassword}
         required
       />
-
       <Button
         type="submit"
         fullWidth
         loading={loading}
+        className="group h-14 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-lg font-semibold shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
       >
-        Create Account
+        <span className="flex items-center justify-center gap-2">
+          Create Account
+          <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
       </Button>
 
-      <p className="text-center text-sm text-gray-600">
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-gray-200"></div>
+        </div>
+
+        <div className="relative flex justify-center">
+          <span className="bg-white px-4 text-sm text-gray-400">
+            Already registered?
+          </span>
+        </div>
+      </div>
+
+      <p className="text-center text-base text-gray-600">
         Already have an account?{" "}
         <Link
           to={ROUTES.LOGIN}
-          className="font-semibold text-blue-600 hover:text-blue-700"
+          className="font-semibold text-blue-600 transition hover:text-indigo-600"
         >
           Login
         </Link>
