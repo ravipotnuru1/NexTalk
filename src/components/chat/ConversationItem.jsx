@@ -1,4 +1,5 @@
 import { FaCheckDouble, FaVolumeMute } from "react-icons/fa";
+import "./ConversationItem.css";
 
 function ConversationItem({
   chat,
@@ -8,64 +9,45 @@ function ConversationItem({
   return (
     <button
       onClick={onClick}
-      className={`
-        group
-        flex
-        w-full
-        items-center
-        gap-4
-        border-b
-        border-gray-100
-        dark:border-slate-700
-        px-5
-        py-5
-        lg:px-4
-        lg:py-4
-        text-left
-        transition-all
-        duration-300
-        ${
-          active
-            ? "bg-blue-50 dark:bg-slate-800 border-r-4 border-blue-600"
-            : "hover:bg-gray-50 dark:hover:bg-slate-800"
-        }
-      `}
+      className={`conversation-item ${
+        active ? "conversation-active" : ""
+      }`}
     >
       {/* Avatar */}
-      <div className="relative flex-shrink-0">
+
+      <div className="conversation-avatar-wrapper">
 
         <img
           src={chat.avatar}
           alt={chat.name}
-          className="h-16 w-16 lg:h-14 lg:w-14 rounded-full object-cover transition duration-300 group-hover:scale-105"
+          className="conversation-avatar"
         />
 
         {chat.online && (
-          <span className="absolute bottom-1 right-1 h-4 w-4 lg:h-3.5 lg:w-3.5 rounded-full border-2 border-white dark:border-slate-800 bg-green-500"></span>
+          <span className="conversation-online-dot"></span>
         )}
 
       </div>
 
       {/* Content */}
-      <div className="min-w-0 flex-1">
 
-        <div className="mb-2 flex items-center justify-between">
+      <div className="conversation-content">
+
+        <div className="conversation-top">
 
           <h3
-            className={`truncate text-lg lg:text-base ${
-              active
-                ? "font-bold text-blue-700 dark:text-blue-400"
-                : "font-semibold text-gray-800 dark:text-white"
+            className={`conversation-name ${
+              active ? "conversation-name-active" : ""
             }`}
           >
             {chat.name}
           </h3>
 
           <span
-            className={`text-sm lg:text-xs ${
+            className={`conversation-time ${
               chat.unread > 0
-                ? "font-semibold text-blue-600"
-                : "text-gray-500 dark:text-gray-400"
+                ? "conversation-time-unread"
+                : ""
             }`}
           >
             {chat.time}
@@ -73,31 +55,32 @@ function ConversationItem({
 
         </div>
 
-        <div className="flex items-center justify-between gap-3">
+        <div className="conversation-bottom">
 
-          <div className="flex min-w-0 items-center gap-2">
+          <div className="conversation-message">
 
             {chat.muted ? (
-              <FaVolumeMute className="text-sm text-gray-400" />
+              <FaVolumeMute className="conversation-icon muted" />
             ) : (
-              <FaCheckDouble className="text-sm text-sky-500" />
+              <FaCheckDouble className="conversation-icon seen" />
             )}
 
-            <p className="truncate text-base lg:text-sm text-gray-500 dark:text-gray-300">
+            <p className="conversation-last-message">
               {chat.lastMessage}
             </p>
 
           </div>
 
           {chat.unread > 0 && (
-            <div className="flex h-7 min-w-[28px] lg:h-6 lg:min-w-[24px] items-center justify-center rounded-full bg-blue-600 px-2 text-xs font-bold text-white">
+            <span className="conversation-unread">
               {chat.unread}
-            </div>
+            </span>
           )}
 
         </div>
 
       </div>
+
     </button>
   );
 }

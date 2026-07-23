@@ -6,14 +6,15 @@ import {
 } from "react-icons/fi";
 
 import useChat from "../../hooks/useChat";
+import "./ChatHeader.css";
 
 function ChatHeader({ onMenuClick }) {
   const { selectedChat } = useChat();
 
   if (!selectedChat) {
     return (
-      <header className="flex h-24 lg:h-20 items-center justify-center border-b border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 transition-colors duration-300">
-        <p className="text-gray-500 dark:text-gray-400 text-base">
+      <header className="chat-header-empty">
+        <p className="chat-header-empty-text">
           Select a conversation
         </p>
       </header>
@@ -21,84 +22,69 @@ function ChatHeader({ onMenuClick }) {
   }
 
   return (
-    <header className="flex h-28 lg:h-20 items-center justify-between border-b border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-6 lg:px-6 shadow-sm transition-colors duration-300">
+    <header className="chat-header">
 
       {/* Left */}
-      <div className="flex min-w-0 items-center gap-5 lg:gap-4">
+      <div className="chat-header-left">
 
         <button
           onClick={onMenuClick}
-          className="rounded-xl p-3 transition hover:bg-gray-100 dark:hover:bg-slate-800 lg:hidden"
+          className="chat-menu-btn"
         >
-          <FiMenu size={28} />
+          <FiMenu size={22} />
         </button>
 
-        <div className="relative flex-shrink-0">
+        <div className="chat-avatar-wrapper">
+
           <img
             src={selectedChat.avatar}
             alt={selectedChat.name}
-            className="h-16 w-16 lg:h-12 lg:w-12 rounded-full object-cover"
+            className="chat-avatar"
           />
 
           {selectedChat.online && (
-            <span className="absolute bottom-0 right-0 h-4 w-4 rounded-full border-2 border-white dark:border-slate-900 bg-green-500"></span>
+            <span className="chat-online-dot"></span>
           )}
+
         </div>
 
-        <div className="min-w-0">
-          <h2 className="truncate text-xl lg:text-base font-semibold text-gray-800 dark:text-white">
+        <div className="chat-user-details">
+
+          <h2 className="chat-user-name">
             {selectedChat.name}
           </h2>
 
           <p
-            className={`truncate text-base lg:text-xs ${
-              selectedChat.online
-                ? "text-green-600"
-                : "text-gray-500 dark:text-gray-400"
+            className={`chat-user-status ${
+              selectedChat.online ? "online" : "offline"
             }`}
           >
             {selectedChat.online
               ? "Online"
               : "Last seen recently"}
           </p>
+
         </div>
 
       </div>
 
       {/* Right */}
-      <div className="flex items-center gap-3 lg:gap-1">
+      <div className="chat-header-actions">
 
-        <button
-          className="rounded-full p-3 lg:p-2.5 transition hover:bg-gray-100 dark:hover:bg-slate-800"
-          title="Voice Call"
-        >
-          <FiPhone
-            size={24}
-            className="text-gray-600 dark:text-gray-300"
-          />
+        <button className="chat-action-btn">
+          <FiPhone className="chat-action-icon" size={20} />
         </button>
 
-        <button
-          className="rounded-full p-3 lg:p-2.5 transition hover:bg-gray-100 dark:hover:bg-slate-800"
-          title="Video Call"
-        >
-          <FiVideo
-            size={24}
-            className="text-gray-600 dark:text-gray-300"
-          />
+        <button className="chat-action-btn">
+          <FiVideo className="chat-action-icon" size={20} />
         </button>
 
-        <button
-          className="rounded-full p-3 lg:p-2.5 transition hover:bg-gray-100 dark:hover:bg-slate-800"
-          title="More"
-        >
-          <FiMoreVertical
-            size={24}
-            className="text-gray-600 dark:text-gray-300"
-          />
+        <button className="chat-action-btn">
+          <FiMoreVertical className="chat-action-icon" size={20} />
         </button>
 
       </div>
+
     </header>
   );
 }

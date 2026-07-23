@@ -1,0 +1,143 @@
+/* ===========================
+   Message Input Wrapper
+=========================== */
+
+.message-input-wrapper {
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 14px 18px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* ===========================
+   Input Container
+=========================== */
+
+.message-input-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 50px;
+  padding: 8px 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.message-input-field {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #1f2937;
+  padding: 8px 4px;
+}
+
+.message-input-field::placeholder {
+  color: #9ca3af;
+}
+
+/* ===========================
+   Send Button
+=========================== */
+
+.message-send-btn {
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.message-send-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+.message-send-btn:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+/* ===========================
+   Focus Effect
+=========================== */
+
+.message-input-container:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* ===========================
+   Dark Mode
+=========================== */
+
+.dark .message-input-wrapper {
+  background: #0f172a;
+  border-top-color: #334155;
+}
+
+.dark .message-input-container {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .message-input-field {
+  color: #ffffff;
+}
+
+.dark .message-input-field::placeholder {
+  color: #94a3b8;
+}
+
+.dark .message-input-container:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 768px) {
+  .message-input-wrapper {
+    padding: 12px;
+  }
+
+  .message-input-container {
+    gap: 8px;
+    padding: 7px 10px;
+  }
+
+  .message-input-field {
+    font-size: 14px;
+  }
+
+  .message-send-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .message-input-wrapper {
+    padding: 10px;
+  }
+
+  .message-input-container {
+    border-radius: 40px;
+  }
+
+  .message-send-btn {
+    width: 40px;
+    height: 40px;
+  }
+}

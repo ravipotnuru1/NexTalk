@@ -1,0 +1,152 @@
+/* ===========================
+   Chat Window
+=========================== */
+
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: #efeae2;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.chat-window-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  background: #f0f2f5;
+}
+
+.chat-window-empty-content {
+  max-width: 500px;
+  padding: 24px;
+  text-align: center;
+}
+
+.chat-window-title {
+  margin-bottom: 12px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.chat-window-subtitle {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #6b7280;
+}
+
+/* ===========================
+   Messages Area
+=========================== */
+
+.chat-window-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+.chat-window-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+.chat-window-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-window-messages::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 20px;
+}
+
+.chat-window-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-window-messages {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* ===========================
+   Dark Mode
+=========================== */
+
+.dark .chat-window {
+  background: #0f172a;
+}
+
+.dark .chat-window-empty {
+  background: #0f172a;
+}
+
+.dark .chat-window-title {
+  color: #ffffff;
+}
+
+.dark .chat-window-subtitle {
+  color: #94a3b8;
+}
+
+.dark .chat-window-messages::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark .chat-window-messages {
+  scrollbar-color: #475569 transparent;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 1024px) {
+  .chat-window-messages {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-window-title {
+    font-size: 28px;
+  }
+
+  .chat-window-subtitle {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .chat-window-messages {
+    padding: 14px;
+  }
+
+  .chat-window-empty-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-window-title {
+    font-size: 24px;
+  }
+
+  .chat-window-subtitle {
+    font-size: 13px;
+  }
+
+  .chat-window-messages {
+    padding: 12px;
+  }
+}
